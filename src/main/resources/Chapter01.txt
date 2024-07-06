@@ -1,4 +1,3 @@
-
 관심사 : 한 작업을 처리하는데 집중
 변화가 한 번에 한 가지 관심에 집중돼서 일어난다면, 준비해야 할 일은 한 곳이다.
 특정 관심사항이 담긴 코드를 별도의 메소드로 분리해서 관리
@@ -16,3 +15,16 @@ UserDao를 추상클래스로, getConnection()을 추상메서드로, 이를 구
 UserDao의 공통메서드인 add(),get() 그대로 사용한다.
 => Connection얻어오는 관심사를 분리, 슈퍼클래스(UserDao)에서 기본적인 로직의 흐름을 만들고, 그 기능의 일부를 추상메소드나 오버라이딩이 가능한 메소드로 만든 후
 서브클래스에서 구현하는 방법을 "템플릿 메소드 패턴" 이라고 한다.  상속이라는 단점
+
+[CASE 2 인터페이스]
+SimpleConnectionMaker class를 따로 분리해 상속을 통한 방식의 단점을 커버했지만
+N사와 D사 독립적으로 구현해서 사용하는게 불가능
+=> ConnectionMaker라는 인터페이스를 정의하고 각각 회사는 구현해서 사용한다.
+하지만 여전히 UserDao는 ConnectionMaker인터페이스와 실제 구현체 모두 의존하고 있다.
+UserDao 변경 없이는 DB커넥션 기능의 확장이 자유롭지 못하다.
+UserDao가 어떤 Connection을 얻어올 것인지는 UserDao의 관심사가 아니다.
+=> UserDao를 사용하는 Client(Main)에서 어떤 Connection을 사용할지 선택해서 주입해준다.  UserDao는 이제 Connection 관심사가 분리되었다.
+==>> Client 입장에서 어떤 Connection을 사용할지를 선택할 수 있음
+
+
+
