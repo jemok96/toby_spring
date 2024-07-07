@@ -3,6 +3,7 @@ package tobyspring.tobyspring.dao.v2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tobyspring.tobyspring.dao.v2.connection.ConnectionMaker;
+import tobyspring.tobyspring.dao.v2.connection.CountingConnectionMaker;
 import tobyspring.tobyspring.dao.v2.connection.DConnectionMaker;
 import tobyspring.tobyspring.dao.v2.connection.NConnectionMaker;
 import tobyspring.tobyspring.dao.v2.dao.AccountDao;
@@ -14,6 +15,10 @@ public class DaoFactory {
     @Bean
     public UserDaoV2 userDao(){
         return new UserDaoV2(getConnectionMaker());
+    }
+    @Bean
+    public ConnectionMaker connectionMaker(){
+        return new CountingConnectionMaker(getConnectionMaker());
     }
     @Bean
     public AccountDao accountDao(){

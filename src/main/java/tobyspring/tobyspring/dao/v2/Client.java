@@ -1,8 +1,13 @@
 package tobyspring.tobyspring.dao.v2;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import tobyspring.tobyspring.dao.v2.connection.ConnectionMaker;
+import tobyspring.tobyspring.dao.v2.connection.CountingConnectionMaker;
+import tobyspring.tobyspring.dao.v2.dao.UserDaoSingleton;
 import tobyspring.tobyspring.dao.v2.dao.UserDaoV2;
 import tobyspring.tobyspring.domain.User;
+
+import java.sql.Connection;
 
 public class Client {
     public static void main(String[] args) throws Exception {
@@ -24,6 +29,10 @@ public class Client {
         System.out.println(user == findUser);
 
         dao.deleteAll();
+
+        CountingConnectionMaker ccm = context.getBean("connectionMaker", CountingConnectionMaker.class);
+        System.out.println("ccm = " + ccm.getCount());
+
     }
 
 }

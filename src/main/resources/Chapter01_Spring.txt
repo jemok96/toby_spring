@@ -12,3 +12,10 @@ BeanFactory, ApplicationContext => IOC 컨테이너 또는 컨테이너
 
 동일성 : ==   (완전 동일)
 동등성 : equals  (동일한 정보를 담고 있음)
+
+
+싱글톤 방식은 생성자가 private인데 스프링 컨테이너의 싱글톤 방식은 public 생성자를 가질 수 있음
+private ConnectionMaker connectionMaker; 이처럼 읽기 전용 값을 인스턴스 변수로 사용하는 것은 괜찮은데
+멀티스레드 환경에서 계속 값이 변하는 User 객체같은건 지역변수로 사용하는게 좋음
+
+오브젝트는 다른 오브젝트에 주입할 수 있는게 아니라 오브젝트의 레퍼런스가 전달될 뿐이다.
