@@ -12,6 +12,8 @@ import tobyspring.tobyspring.dao.v2.dao.UserDaoV2;
 import tobyspring.tobyspring.dao.v2.dao.UserDaoV3;
 import tobyspring.tobyspring.domain.Constant;
 
+import javax.sql.DataSource;
+
 
 @Configuration
 public class DaoFactory {
@@ -53,6 +55,6 @@ public class DaoFactory {
         dataSource.setUrl(Constant.URL);
         dataSource.setUsername(Constant.USER);
         dataSource.setPassword(Constant.PW);
-        return (DataSource) dataSource;
+        return dataSource;
     }
 }

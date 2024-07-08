@@ -13,8 +13,7 @@ public class Client2 {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
         UserDaoV3 dao = context.getBean("userDao3", UserDaoV3.class);
-        MessageDao messageDao = context.getBean("messageDao", MessageDao.class);
-        System.out.println("messageDao = " + messageDao);
+
         User user = new User();
         user.setId("rudnf");
         user.setName("Jemok");

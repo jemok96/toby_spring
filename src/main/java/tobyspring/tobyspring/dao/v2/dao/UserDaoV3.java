@@ -1,9 +1,9 @@
 package tobyspring.tobyspring.dao.v2.dao;
 
-import tobyspring.tobyspring.dao.v2.DataSource;
-import tobyspring.tobyspring.dao.v2.connection.ConnectionMaker;
+
 import tobyspring.tobyspring.domain.User;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
