@@ -1,4 +1,4 @@
-package tobyspring;
+package tobyspring.tobyspring.domain;
 
 import lombok.Getter;
 

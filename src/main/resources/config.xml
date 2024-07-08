@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="userDao" class="tobyspring.tobyspring.dao.v2.dao.UserDaoV2">
+        <constructor-arg ref="connectionMaker"/>
+    </bean>
+    <bean id="connectionMaker" class="tobyspring.tobyspring.dao.v2.connection.CountingConnectionMaker">
+        <constructor-arg ref="getConnectionMaker"/>
+    </bean>
+    <bean id="accountDao" class="tobyspring.tobyspring.dao.v2.dao.AccountDao">
+        <constructor-arg ref="getConnectionMaker"/>
+    </bean>
+    <bean id="messageDao" class="tobyspring.tobyspring.dao.v2.dao.MessageDao">
+        <constructor-arg ref="getConnectionMaker"/>
+    </bean>
+
+    <bean id="getConnectionMaker" class="tobyspring.tobyspring.dao.v2.connection.DConnectionMaker"/>
+
+</beans>
