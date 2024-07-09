@@ -1,4 +1,4 @@
-package tobyspring.tobyspring.dao.v2;
+package tobyspring.tobyspring.dao.v2.connection;
 
 import java.sql.Connection;
 

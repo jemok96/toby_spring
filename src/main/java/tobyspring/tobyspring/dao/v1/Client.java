@@ -1,13 +1,10 @@
-package tobyspring.tobyspring.main;
+package tobyspring.tobyspring.dao.v1;
 
-import tobyspring.tobyspring.dao.v1.NUserDao;
-import tobyspring.tobyspring.dao.v1.UserDaoV1;
-import tobyspring.tobyspring.dao.v2.UserDaoV2;
 import tobyspring.tobyspring.domain.User;
 
-public class MainV2 {
+public class Client {
     public static void main(String[] args) throws Exception {
-        UserDaoV2 userDao = new UserDaoV2();
+        UserDaoV1 userDao = new NUserDao();
 
         User user = new User();
         user.setId("rudnf");

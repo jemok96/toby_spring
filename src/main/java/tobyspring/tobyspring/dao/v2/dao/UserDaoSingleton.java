@@ -1,19 +1,31 @@
-package tobyspring.tobyspring.dao.v2;
+package tobyspring.tobyspring.dao.v2.dao;
 
+import tobyspring.tobyspring.dao.v2.connection.ConnectionMaker;
+import tobyspring.tobyspring.dao.v2.connection.DConnectionMaker;
 import tobyspring.tobyspring.domain.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * SQL생성하고, 이를 실행하는 데만 집중함
+ * Connection을 가져오는 방벙은 자신이 선택하지 않는다.
+ */
 
-public  class UserDaoV2 {
-//   private SimpleConnectionMaker simpleConnectionmaker;
-//    public UserDaoV2() {simpleConnectionmaker = new SimpleConnectionMaker();}
+
+public  class UserDaoSingleton {
+
     private ConnectionMaker connectionMaker;
-
-    public UserDaoV2() {
-        this.connectionMaker = new DConnectionMaker();
+    private static UserDaoSingleton INSTANCE;
+    private UserDaoSingleton(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
+    }
+    public static UserDaoSingleton getInstance() {
+        if(INSTANCE==null) {
+            INSTANCE = new UserDaoSingleton(new DConnectionMaker());
+        }
+        return INSTANCE;
     }
 
     public void add(User user) throws Exception{

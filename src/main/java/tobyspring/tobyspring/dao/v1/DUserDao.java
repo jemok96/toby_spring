@@ -1,7 +1,7 @@
 package tobyspring.tobyspring.dao.v1;
 
 import lombok.extern.slf4j.Slf4j;
-import tobyspring.Constant;
+import tobyspring.tobyspring.domain.Constant;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
