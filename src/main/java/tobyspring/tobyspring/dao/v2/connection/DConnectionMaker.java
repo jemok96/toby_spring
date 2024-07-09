@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 public class DConnectionMaker implements ConnectionMaker{
     @Override
     public Connection makeNewConnection() throws Exception {
-        log.info("DConnection");
+
 
         Class.forName(Constant.DRIVER);
         return  DriverManager.getConnection(Constant.URL, Constant.USER,Constant.PW);

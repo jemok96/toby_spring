@@ -9,7 +9,7 @@ import tobyspring.tobyspring.dao.v2.connection.DConnectionMaker;
 import tobyspring.tobyspring.dao.v2.dao.AccountDao;
 import tobyspring.tobyspring.dao.v2.dao.MessageDao;
 import tobyspring.tobyspring.dao.v2.dao.UserDaoV2;
-import tobyspring.tobyspring.dao.v2.dao.UserDaoV3;
+import tobyspring.tobyspring.dao.v2.dao.UserDao;
 import tobyspring.tobyspring.domain.Constant;
 
 import javax.sql.DataSource;
@@ -21,13 +21,13 @@ public class DaoFactory {
     public UserDaoV2 userDao(){
         return new UserDaoV2(connectionMaker());
     }
-    /*@Bean
+    @Bean
     public UserDaoV2 userDao2(){
         return new UserDaoV2(getConnectionMaker());
-    }*/
+    }
     @Bean
-    public UserDaoV3 userDao3() throws ClassNotFoundException {
-        UserDaoV3 dao = new UserDaoV3();
+    public UserDao userDaoMain() throws ClassNotFoundException {
+        UserDao dao = new UserDao();
         dao.setDataSource(dataSource());
         return dao;
     }

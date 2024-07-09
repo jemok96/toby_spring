@@ -1,6 +1,7 @@
 package tobyspring.tobyspring.dao.v2.dao;
 
 
+import lombok.Setter;
 import tobyspring.tobyspring.domain.User;
 
 import javax.sql.DataSource;
@@ -9,12 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-public  class UserDaoV3 {
+@Setter
+public  class UserDao {
     private DataSource dataSource;
-
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
 
     public void add(User user) throws Exception{
         Connection c = dataSource.getConnection();
@@ -57,6 +55,20 @@ public  class UserDaoV3 {
 
         ps.close();
         c.close();
+    }
+    public int getCount() throws Exception{
+        Connection c = dataSource.getConnection();
+        String sql = "SELECT COUNT(*) FROM users";
+        PreparedStatement ps = c.prepareStatement(sql);
+
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        int result = rs.getInt(1);
+
+        rs.close();
+        ps.close();
+        c.close();
+        return result;
     }
 
 }

@@ -1,5 +1,6 @@
 package tobyspring.tobyspring.dao.v2.dao;
 
+import org.springframework.context.annotation.Configuration;
 import tobyspring.tobyspring.dao.v2.connection.ConnectionMaker;
 import tobyspring.tobyspring.domain.User;
 
@@ -7,13 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-/**
- * SQL생성하고, 이를 실행하는 데만 집중함
- * Connection을 가져오는 방벙은 자신이 선택하지 않는다.
- */
 
-
-public  class UserDaoV2 {
+public class UserDaoV2 {
 //   private SimpleConnectionMaker simpleConnectionmaker;
 //    public UserDaoV2() {simpleConnectionmaker = new SimpleConnectionMaker();}
     private ConnectionMaker connectionMaker;
