@@ -2,6 +2,7 @@ package tobyspring.tobyspring.dao.v2.dao;
 
 
 import lombok.Setter;
+import org.springframework.dao.EmptyResultDataAccessException;
 import tobyspring.tobyspring.domain.User;
 
 import javax.sql.DataSource;
@@ -33,14 +34,18 @@ public  class UserDao {
         String sql = "SELEcT * FROM USERS WHERE ID = ?";
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, id);
+        User user = null;
 
         ResultSet rs = ps.executeQuery();
-        rs.next();
-        User user = new User();
-        user.setId(rs.getString("id"));
-        user.setName(rs.getString("name"));
-        user.setPassword(rs.getString("password"));
-
+        if(rs.next()) {
+            user = new User();
+            user.setId(rs.getString("id"));
+            user.setName(rs.getString("name"));
+            user.setPassword(rs.getString("password"));
+        }
+        if(user==null){
+            throw new EmptyResultDataAccessException(1);
+        }
         rs.close();
         ps.close();
         c.close();
